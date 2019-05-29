@@ -867,7 +867,7 @@ public class Assert {
       if (message != null) {
         formatted = message + " ";
       }
-      fail(formatted + "expected object to not be null" + "\r\n-----------------------------------------------------\r\n");
+      fail(formatted + "expected object to not be null" + ASSERT_SPACER);
     }
     assertTrue(object != null, message);
   }
