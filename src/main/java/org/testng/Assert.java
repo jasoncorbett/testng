@@ -1,11 +1,5 @@
 package org.testng;
 
-import static org.testng.internal.EclipseInterface.ASSERT_LEFT;
-import static org.testng.internal.EclipseInterface.ASSERT_LEFT2;
-import static org.testng.internal.EclipseInterface.ASSERT_MIDDLE;
-import static org.testng.internal.EclipseInterface.ASSERT_RIGHT;
-import static org.testng.internal.EclipseInterface.ASSERT_LEFT_INEQUALITY;
-
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collection;
@@ -14,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.testng.collections.Lists;
+
+import static org.testng.internal.EclipseInterface.*;
 
 /**
  * Assertion tool class. Presents assertion methods with a more natural parameter order. The order
@@ -871,7 +867,7 @@ public class Assert {
       if (message != null) {
         formatted = message + " ";
       }
-      fail(formatted + "expected object to not be null");
+      fail(formatted + "expected object to not be null" + "\r\n-----------------------------------------------------\r\n");
     }
     assertTrue(object != null, message);
   }
@@ -970,7 +966,7 @@ public class Assert {
   }
 
   static String format(Object actual, Object expected, String message) {
-    return format(actual, expected, message, false);
+    return format(actual, expected, message, true);
   }
 
   static String format(Object actual, Object expected, String message, boolean equality) {
@@ -981,7 +977,7 @@ public class Assert {
     if (equality) {
       return formatted + ASSERT_LEFT + expected + ASSERT_MIDDLE + actual + ASSERT_RIGHT;
     }
-    return formatted + ASSERT_LEFT_INEQUALITY + expected + ASSERT_MIDDLE + actual + ASSERT_RIGHT;
+    return formatted + ASSERT_LEFT_INEQUALITY + expected + ASSERT_MIDDLE_INEQUALITY;
   }
 
   /**
