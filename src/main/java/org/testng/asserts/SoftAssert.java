@@ -34,7 +34,7 @@ public class SoftAssert extends Assertion {
         if (first) {
           first = false;
         } else {
-          sb.append(",");
+          sb.append(" ");
         }
         sb.append("\n\t");
         sb.append(error.getMessage());
